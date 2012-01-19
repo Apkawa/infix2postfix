@@ -126,7 +126,22 @@ def main():
 
     print postfix_calculate(infix2postfix(file_reader(file_obj)))
 
+def main_final():
+    try:
+        file_obj = open(sys.argv[1])
+    except IndexError:
+        file_obj = sys.stdin
+
+
+    for symbol in infix2postfix(file_reader(file_obj)):
+        sys.stdout.write(str(symbol))
+    print
+
 
 if __name__ == '__main__':
-    main()
+    if "--calc" in sys.argv:
+        sys.argv.remove("--calc")
+        main()
+    else:
+        main_final()
     #test()

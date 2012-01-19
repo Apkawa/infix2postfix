@@ -50,7 +50,9 @@ def generate_infix(max_symbol=1024):
 
         elif state == OPERATOR:
             state = random.choice([NUMBER, OPEN_BRACKET])
+            yield " "
             yield get_operator()
+            yield " "
 
     if state == OPERATOR:
         yield get_operator()
@@ -83,8 +85,11 @@ def main():
     except:
         length = 1024
 
+    #f = open("test.txt", "wb")
+    f = sys.stdout
+
     for symbol in generate_infix(length):
-        sys.stdout.write(str(symbol))
+        f.write(str(symbol))
 
 if __name__ == '__main__':
     #test()
