@@ -71,13 +71,17 @@ void generate_infix(long max_symbol_count) {
             case NUMBER_STATE:
                 {
                     if (bracket_num) {
-                        int next_state[] = {OPERATOR_STATE, CLOSE_BRACKET_STATE};
-                        state = rand_choice_int(next_state, 2);
+                        if (randint(0, 1) == 1) {
+                            state = OPERATOR_STATE;
+                        } else {
+                            state = CLOSE_BRACKET_STATE;
+                        }
                     }
                     else {
                         state = OPERATOR_STATE;
                     }
                     write_int(get_number());
+                    break;
                 }
 
             case OPERATOR_STATE:
@@ -86,6 +90,7 @@ void generate_infix(long max_symbol_count) {
                     write_symbol(SPACE);
                     write_symbol(get_operator());
                     write_symbol(SPACE);
+                    break;
                 }
 
         }
@@ -118,7 +123,7 @@ void generate_infix(long max_symbol_count) {
 
 int main(int argc, const char *argv[])
 {
-    long max_symbol_count;
+    unsigned long max_symbol_count;
     srand(time(NULL));
     if (argc > 1)
     {
