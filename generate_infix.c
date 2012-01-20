@@ -18,11 +18,11 @@ void write_symbol(char ch) {
     printf("%c", ch);
 }
 
-void write_int(int ch) {
+void write_int(unsigned int ch) {
     printf("%i", ch);
 }
 
-int randint(int from, int to) {
+unsigned int randint(unsigned int from, unsigned int to) {
     return from + rand() % to;
 }
 
@@ -39,7 +39,7 @@ char get_operator(void) {
 }
 
 char get_number(void) {
-    return randint(0, 5000);
+    return randint(1, 5000);
 }
 
 
@@ -71,10 +71,10 @@ void generate_infix(long max_symbol_count) {
             case NUMBER_STATE:
                 {
                     if (bracket_num) {
-                        if (randint(0, 1) == 1) {
-                            state = OPERATOR_STATE;
-                        } else {
+                        if (randint(1, 3) == 1) {
                             state = CLOSE_BRACKET_STATE;
+                        } else {
+                            state = OPERATOR_STATE;
                         }
                     }
                     else {
