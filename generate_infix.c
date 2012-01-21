@@ -18,12 +18,12 @@ void write_symbol(char ch) {
     printf("%c", ch);
 }
 
-void write_int(unsigned int ch) {
+void write_int(int ch) {
     printf("%i", ch);
 }
 
-unsigned int randint(unsigned int from, unsigned int to) {
-    return from + rand() % to;
+int randint(int from, int to) {
+    return (from + rand() % to);
 }
 
 int rand_choice_int(int *array, int array_length) {
@@ -38,7 +38,7 @@ char get_operator(void) {
    return rand_choice_char(OPERATORS, 4);
 }
 
-char get_number(void) {
+int get_number(void) {
     return randint(1, 5000);
 }
 
@@ -92,10 +92,8 @@ void generate_infix(long max_symbol_count) {
                     write_symbol(SPACE);
                     break;
                 }
-
         }
     }
-
 
     if (state == OPERATOR_STATE)
     {
@@ -135,3 +133,4 @@ int main(int argc, const char *argv[])
     generate_infix(max_symbol_count);
     return 0;
 }
+
