@@ -1,0 +1,16 @@
+[package]
+name = "infix2postfix"
+version = "0.0.1"
+authors = ["apkawa <apkawa@gmail.com>"]
+
+[dependencies]
+rand = "*"
+num  = "*"
+
+[[bin]]
+name = "generate_infix"
+path = "src/generate_infix.rs"
+
+[[bin]]
+name = "infix2postfix"
+path = "src/infix2postfix.rs"
